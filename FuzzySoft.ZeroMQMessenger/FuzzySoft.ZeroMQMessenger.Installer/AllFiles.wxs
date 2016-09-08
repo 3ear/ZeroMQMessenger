@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="HostAppDir">
+            <Directory Id="dirA8010C08609D51FE1B899054372982A3" Name="amd64" />
+            <Directory Id="dir827284580F96471017B31015A41B9CA8" Name="i386" />
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="ServiceComponents">
+            <Component Id="cmp09C1CBAE53670B0372A5694B80C3855B" Directory="HostAppDir" Guid="*">
+                <File Id="filC2CAB5110124821B7AED032983D11C14" KeyPath="yes" Source="$(var.FuzzySoft.ZeroMQMessenger.TargetDir)\FuzzySoft.ZeroMQMessenger.exe" />
+            </Component>
+            <Component Id="cmp77C45AD0142AFF653E4CA6F880A2A74B" Directory="HostAppDir" Guid="*">
+                <File Id="filB24D5B2A2F46B96DDB997765721AFCB6" KeyPath="yes" Source="$(var.FuzzySoft.ZeroMQMessenger.TargetDir)\FuzzySoft.ZeroMQMessenger.exe.config" />
+            </Component>
+            <Component Id="cmpCD2C977DC2E8CE028023DDC224DB7C2B" Directory="HostAppDir" Guid="*">
+                <File Id="filDF99037C658B55DE14F2B1732F14FFD1" KeyPath="yes" Source="$(var.FuzzySoft.ZeroMQMessenger.TargetDir)\FuzzySoft.ZeroMQMessenger.pdb" />
+            </Component>
+            <Component Id="cmp3B5502877D772F1649579B7229E091BA" Directory="HostAppDir" Guid="*">
+                <File Id="fil3793F51132B8A6398A28B0C9EC56DB77" KeyPath="yes" Source="$(var.FuzzySoft.ZeroMQMessenger.TargetDir)\FuzzySoft.ZeroMQMessenger.vshost.exe" />
+            </Component>
+            <Component Id="cmp32935A8392A16B8B7EA30E55515F163E" Directory="HostAppDir" Guid="*">
+                <File Id="filB71F113ADD13B9ACD00DCB6919CF4395" KeyPath="yes" Source="$(var.FuzzySoft.ZeroMQMessenger.TargetDir)\FuzzySoft.ZeroMQMessenger.vshost.exe.config" />
+            </Component>
+            <Component Id="cmpBE47CDB63CDFB551CA3220F6D3FA52D9" Directory="HostAppDir" Guid="*">
+                <File Id="fil8FD39091F58FD65916CD31BDD5989D6D" KeyPath="yes" Source="$(var.FuzzySoft.ZeroMQMessenger.TargetDir)\FuzzySoft.ZeroMQMessenger.vshost.exe.manifest" />
+            </Component>
+            <Component Id="cmpD766682B52345197D9E06288C7C7D7C3" Directory="HostAppDir" Guid="*">
+                <File Id="filE9C7E468464356236829F7ED18BAAC6F" KeyPath="yes" Source="$(var.FuzzySoft.ZeroMQMessenger.TargetDir)\Topshelf.dll" />
+            </Component>
+            <Component Id="cmp61962B226A8DE643723C25B85F5D9C77" Directory="HostAppDir" Guid="*">
+                <File Id="fil8EBEBD24D8398CFC526E1C673839E92E" KeyPath="yes" Source="$(var.FuzzySoft.ZeroMQMessenger.TargetDir)\ZeroMQ.dll" />
+            </Component>
+            <Component Id="cmpBAE63082C1261CF7EFB785169E17D260" Directory="dirA8010C08609D51FE1B899054372982A3" Guid="*">
+                <File Id="fil0D8CD61EEC2E8A233150EDC50828B993" KeyPath="yes" Source="$(var.FuzzySoft.ZeroMQMessenger.TargetDir)\amd64\libsodium.dll" />
+            </Component>
+            <Component Id="cmpCCDA65CBD12263F77C4E83593B5917B4" Directory="dirA8010C08609D51FE1B899054372982A3" Guid="*">
+                <File Id="fil83D41E0381FD22265D2AE050D9946FC6" KeyPath="yes" Source="$(var.FuzzySoft.ZeroMQMessenger.TargetDir)\amd64\libsodium.so" />
+            </Component>
+            <Component Id="cmpFD328E96D056705BF40EB2A7A8ACD5BA" Directory="dirA8010C08609D51FE1B899054372982A3" Guid="*">
+                <File Id="filF173C4D4768E1AB17E58BA5EA1643C63" KeyPath="yes" Source="$(var.FuzzySoft.ZeroMQMessenger.TargetDir)\amd64\libzmq.dll" />
+            </Component>
+            <Component Id="cmp5A45EDC9A42E87968A5CD4C17781CF83" Directory="dirA8010C08609D51FE1B899054372982A3" Guid="*">
+                <File Id="fil9C8A937FBBE1873219C8D01F60C91BE0" KeyPath="yes" Source="$(var.FuzzySoft.ZeroMQMessenger.TargetDir)\amd64\libzmq.so" />
+            </Component>
+            <Component Id="cmp5EC3DD7B1502384B67A0D106DF6B2371" Directory="dir827284580F96471017B31015A41B9CA8" Guid="*">
+                <File Id="fil984811158D23FD2800C25F9B93F12695" KeyPath="yes" Source="$(var.FuzzySoft.ZeroMQMessenger.TargetDir)\i386\libsodium.dll" />
+            </Component>
+            <Component Id="cmp533E66C64FB004A978659F5047163E07" Directory="dir827284580F96471017B31015A41B9CA8" Guid="*">
+                <File Id="fil0DDFD36F17C0FF9A99BF9BED77D2396F" KeyPath="yes" Source="$(var.FuzzySoft.ZeroMQMessenger.TargetDir)\i386\libsodium.so" />
+            </Component>
+            <Component Id="cmp3E4834451D097C51BD96886817694035" Directory="dir827284580F96471017B31015A41B9CA8" Guid="*">
+                <File Id="filE6C07071D2BEB640B96A80141650BFE1" KeyPath="yes" Source="$(var.FuzzySoft.ZeroMQMessenger.TargetDir)\i386\libzmq.dll" />
+            </Component>
+            <Component Id="cmpD2F117BE626F680958E0945DDB6DF976" Directory="dir827284580F96471017B31015A41B9CA8" Guid="*">
+                <File Id="fil6AE15DF94100435E0F00C3FBAFD0B40E" KeyPath="yes" Source="$(var.FuzzySoft.ZeroMQMessenger.TargetDir)\i386\libzmq.so" />
+            </Component>
+        </ComponentGroup>
+    </Fragment>
+</Wix>
