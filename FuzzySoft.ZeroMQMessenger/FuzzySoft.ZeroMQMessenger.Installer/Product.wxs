@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?define PRODUCT="FuzzySoft ZeroMQ Messenger"?>
+  <?define SHORTNAME="Messenger"?>
+  <?define VERSION="!(bind.FileVersion.MainExecutableFile)"?>
+  <?define PRODUCTID="83A1D70B-1CA7-44AB-8CC5-D705068D9F65"?>
+  <Product  Id="*"
+            Name="$(var.PRODUCT)"
+            Language="1033"
+            Version="$(var.VERSION)"
+            Manufacturer="FuzzySoft"
+            UpgradeCode="$(var.PRODUCTID)">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <Upgrade Id="$(var.PRODUCTID)">
+      <UpgradeVersion
+        Minimum="0.0.0.0" Maximum="99.0.0.0"
+        IncludeMinimum="yes" IncludeMaximum="no"
+        Property="PREVIOUSVERSIONSINSTALLED" />
+    </Upgrade>
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes"/>
+
+    <Feature Id="ProductFeature" Title="FuzzySoft ZeroMQ Messenger" Level="1">
+      <ComponentGroupRef Id="ServiceComponents"/>
+      <ComponentGroupRef Id="ProductComponents" />
+    </Feature>
+  </Product>
+
+  <Fragment>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="NOVDir" Name="FuzzySoft">
+          <Directory Id="HostAppDir" Name="FuzzySoft Messenger" />
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <CustomAction Id="RunTopShelfServiceInstall" Directory="HostAppDir" Execute="deferred" Return="ignore" Impersonate="no" ExeCommand="[HostAppDir]FuzzySoft.ZeroMQMessenger.exe install start"/>
+    <CustomAction Id="RunTopShelfServiceUninstall" Directory="HostAppDir" Execute="deferred" Return="ignore" Impersonate="no" ExeCommand="[HostAppDir]FuzzySoft.ZeroMQMessenger.exe uninstall"/>
+
+    <InstallExecuteSequence>
+      <Custom Action="RunTopShelfServiceInstall" After="InstallFiles">NOT Installed</Custom>
+      <Custom Action="RunTopShelfServiceUninstall" After='InstallInitialize'>Installed AND (REMOVE="ALL")</Custom>
+    </InstallExecuteSequence>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="ProductComponents" Directory="HostAppDir">
+
+      <Component Id="MainExecutableCmp" Guid="5E3EBAE3-DC10-4E04-B87A-A88C5C383700">
+        <File Id="MainExecutableFile" KeyPath="yes" Source="$(var.FuzzySoft.ZeroMQMessenger.TargetDir)\FuzzySoft.ZeroMQMessenger.exe" />
+      </Component>
+
+    </ComponentGroup>
+  </Fragment>
+</Wix>
